@@ -1,5 +1,5 @@
 ---
-name: git:pr
+name: gpr
 description: Use when the user asks to create a PR, open a pull request, submit changes for review, or after completing a feature/fix that needs to be merged
 argument-hint: [title]
 ---
@@ -10,9 +10,9 @@ Create pull requests following project conventions.
 
 ## Usage
 
-`/git:pr <title>` - Create a PR with the given title
-`/git:pr` - Analyze commits and generate PR title/description
-`/git:pr --refs` - Create a PR that references (but does not close) the linked task
+`/gpr <title>` - Create a PR with the given title
+`/gpr` - Analyze commits and generate PR title/description
+`/gpr --refs` - Create a PR that references (but does not close) the linked task
 
 ## PR Conventions
 

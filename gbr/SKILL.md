@@ -1,5 +1,5 @@
 ---
-name: git:branch
+name: gbr
 description: Use when the user asks to create a branch, start a new feature, begin working on a fix, or switch to a new task that requires a fresh branch
 argument-hint: [branch-name]
 ---
@@ -10,7 +10,7 @@ Create or switch to a git branch following project naming conventions.
 
 ## Usage
 
-`/git:branch <branch-name>` - Create a new branch with the given name
+`/gbr <branch-name>` - Create a new branch with the given name
 
 ## Branch Naming Rules
 

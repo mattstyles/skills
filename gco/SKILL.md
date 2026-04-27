@@ -1,5 +1,5 @@
 ---
-name: git:commit
+name: gco
 description: Use when the user asks to commit changes, save work, checkpoint progress, or after completing a unit of work that should be committed
 argument-hint: [message]
 ---
@@ -10,8 +10,8 @@ Create git commits following project commit message conventions.
 
 ## Usage
 
-`/git:commit <message>` - Create a commit with the given message
-`/git:commit` - Analyze staged changes and generate an appropriate commit message
+`/gco <message>` - Create a commit with the given message
+`/gco` - Analyze staged changes and generate an appropriate commit message
 
 ## Commit Message Rules
 

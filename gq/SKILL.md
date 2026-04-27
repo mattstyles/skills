@@ -1,5 +1,5 @@
 ---
-name: git:q
+name: gq
 description: Use when the user wants to quickly ship a small change, fix, or chore — creates a branch, commits, and opens a PR in one go
 argument-hint: [description]
 ---
@@ -10,14 +10,14 @@ Quickly create a branch, commit changes, and open a pull request in a single flo
 
 ## Usage
 
-`/git:q <description>` - Ship changes with the given description
-`/git:q` - Analyze changes automatically
+`/gq <description>` - Ship changes with the given description
+`/gq` - Analyze changes automatically
 
 ## Instructions
 
-- If on `main`, run `/git:branch` to create a branch (use `$ARGUMENTS` to derive the name)
-- Run `/git:commit` to stage, commit, and push changes
-- Run `/git:pr` to open a pull request
+- If on `main`, run `/gbr` to create a branch (use `$ARGUMENTS` to derive the name)
+- Run `/gco` to stage, commit, and push changes
+- Run `/gpr` to open a pull request
 - Ask the user if they want to merge once checks pass
   - If yes: watch with `gh pr checks <number> --watch`, then `gh pr merge <number> --merge --delete-branch`
   - If no: leave the PR open
