@@ -30,11 +30,11 @@ Create a beads epic for the overall plan:
 - **Title**: the plan's goal
 - **Type**: `feature`
 - **Priority**: match the urgency the user has conveyed (default to 2 if unclear)
-- **Description**: summary of what the plan delivers, with links to the plan file and the source PRD (if the plan's frontmatter has a `source` field)
+- **Description**: summary of what the plan delivers, with links to the plan file and the upstream artefact (if the plan's frontmatter has a `source` field — typically a PRD or idea file). Include a completion ritual: on completion of the final phase, prepend ✅ to the plan's `# Title` heading in the plan file.
 
 ### 3. Create phase issues
 
-For each phase in the plan, create a child beads issue using the phase template at `${CLAUDE_SKILL_DIR}/references/phase-template.md`:
+For each phase in the plan, create a child beads issue using the issue body template at `${CLAUDE_SKILL_DIR}/references/issue-body-template.md`:
 
 - **Title**: the phase goal
 - **Type**: `task` (or `feature` if the phase delivers user-facing functionality)
@@ -42,20 +42,29 @@ For each phase in the plan, create a child beads issue using the phase template 
   - What this phase delivers (the vertical slice)
   - Phase acceptance criteria
   - Which plan-level ACs this phase covers
+  - Completion ritual: on completion (PR merged), prepend ✅ to this phase's heading in the plan file (e.g. `### ✅ Phase 1: [Goal] — beads-abc123`)
 
-Wire dependencies:
-- Each phase depends on the previous phase (phase 2 depends on phase 1, etc.)
-- The epic depends on all phases (`bd dep add <epic> <phase>`)
+Wire dependencies (`bd dep add <dependent> <dependency>`):
+- Each phase depends on the previous phase: `bd dep add <phase-N> <phase-N-1>`
+- The epic depends on every phase: `bd dep add <epic> <phase-N>` for each phase
 
 ### 4. Update the plan file
 
 After creating all beads, update the plan document on disk so each phase heading includes its bead ID:
 
 ```
-### Phase 1 [beads-abc123]: [Goal]
+### Phase 1: [Goal] — beads-abc123
 ```
 
-This keeps the plan file as the single source of truth linking phases to their tracking issues.
+On phase completion, prepend ✅ to the heading (the requirement to do this lives in the bead itself):
+
+```
+### ✅ Phase 1: [Goal] — beads-abc123
+```
+
+When every phase is complete, prepend ✅ to the plan's `# Title` heading too.
+
+This keeps the plan file as the single source of truth linking phases to their tracking issues, with completion state visible alongside the bead reference.
 
 ### 5. Confirm
 

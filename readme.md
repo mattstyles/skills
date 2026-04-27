@@ -3,13 +3,16 @@
 ## Productivity
 
 Product work flows through planning and design to implementation.
-The skills presented here define a workflow focussed on deliverables.
+The skills presented here define workflows focussed on deliverables.
 
 ```
 idea -> gorilla -> prd -> plan -> breakdown
+gorilla -> plan -> breakdown
 ```
 
-This workflow creates a base for delivering the work.
+The first workflow is for new product surface that needs a PRD. The second is for changes that don't need a full PRD — go straight from grilling to a plan.
+
+These workflows create a base for delivering the work.
 
 * **idea** - Quickly record an idea for future development.
   ```
@@ -21,7 +24,7 @@ This workflow creates a base for delivering the work.
   npx skills@latest add mattstyles/skills/gorilla
   ```
 
-* **prd** - Create a product requirments document based on the conversation.
+* **prd** - Create a product requirements document based on the conversation.
   ```
   npx skills@latest add mattstyles/skills/prd
   ```

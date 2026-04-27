@@ -20,9 +20,9 @@ Ideas are low-friction and ephemeral. Their only purpose is to record a problem 
 
    Do NOT over-interview. If the user gives a short answer, that's fine — capture what they have.
 
-3. Determine the next available number by checking existing files in `docs/ideas/`. Use the format `NNN` (zero-padded to 3 digits).
+3. Determine the next available number by checking existing files in `docs/ideas/`. If the directory does not exist, create it and start at `001`. Use the format `NNN` (zero-padded to 3 digits).
 
-4. Write the file to `docs/ideas/NNN-slug.md` using the template at `${CLAUDE_SKILL_DIR}/references/template.md`. The slug should be short kebab-case derived from the idea.
+4. Write the file to `docs/ideas/NNN-slug.md` using the template at `${CLAUDE_SKILL_DIR}/references/template.md`. The slug should be short kebab-case derived from the idea. Substitute the heading `# NNN — Title` with the actual number and a human-readable title (e.g. `# 005 — Workspace Snapshots`).
 
 5. Confirm the file was written and stop. Do NOT offer to start a PRD, invoke gorilla, or take any next step.
 

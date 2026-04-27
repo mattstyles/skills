@@ -14,11 +14,12 @@ Read the vertical slices reference at `${CLAUDE_SKILL_DIR}/references/vertical-s
 
 ## How to produce the plan
 
-Work through sections 1–6 below in order. Output each section as you go. The plan is a conversation — the user will push back, ask questions, and request changes. That's the point.
+Draft sections 1–6 below in order, outputting each section as you go. Then run the Assessment (section 7) to revise, then Acceptance (section 8) to iterate with the user, and finally Write to disk (section 9) once the plan is accepted. The plan is a conversation — the user will push back, ask questions, and request changes. That's the point.
 
 ### 1. Gather context
 
-- If `$ARGUMENTS` references a PRD (e.g. `docs/prd/005-workspace-snapshots.md`), read it. The PRD's problem, needle, solution, and user stories are the foundation.
+- If `$ARGUMENTS` references a PRD (e.g. `docs/prds/005-workspace-snapshots.md`), read it. The PRD's problem, needle, solution, and user stories are the foundation.
+- If gorilla ran earlier in this conversation, use the resolved decisions and constraints.
 - If starting from a freeform description, treat `$ARGUMENTS` as the basis.
 - Explore the codebase to understand the current state — existing behaviour, relevant code, constraints.
 
@@ -79,30 +80,30 @@ Step back and critically assess the plan. This is AI-driven — do the work, don
 
 If the assessment reveals problems, revise the plan and call out what you changed and why.
 
-### 8. Write to disk
+### 8. Acceptance
 
-Determine the next available number by checking existing files in `docs/plans/`. Use the format `NNN` (zero-padded to 3 digits).
+Present the complete plan to the user and ask rigorous questions to verify shared understanding — similar to gorilla but focused on confirming alignment rather than deep exploration. The plan should be mostly correct by this point; acceptance is a final verification.
+
+When the user requests changes, revise the plan, re-run the assessment, and re-present. Always show the complete picture, not just a diff. Do NOT write to disk while iterating.
+
+Keep iterating until the user explicitly accepts.
+
+### 9. Write to disk
+
+Only after explicit acceptance, write the plan to disk.
+
+Determine the next available number by checking existing files in `docs/plans/`. If the directory does not exist, create it and start at `001`. Use the format `NNN` (zero-padded to 3 digits).
 
 Write to `docs/plans/NNN-slug.md` using the template at `${CLAUDE_SKILL_DIR}/references/plan-template.md`. The slug should be short kebab-case derived from the goal. Populate the YAML frontmatter:
 
 - `title` — the plan title
-- `source` — path to the PRD, if the plan was driven from one (omit if not applicable)
+- `source` — path to the upstream artefact (PRD or idea file), if the plan was driven from one (omit if not applicable)
 
-Present the plan to the user and ask them to accept, reject, or request changes.
-
-## Acceptance
-
-When presenting for acceptance, ask rigorous questions to verify shared understanding — similar to gorilla but focused on confirming alignment. The plan should be mostly correct by this point; acceptance is a final verification, not deep exploration.
-
-Keep iterating until the user explicitly accepts.
+Confirm the file was written.
 
 ## On acceptance
 
-When the user accepts the plan, offer to run the breakdown skill to create beads issues for implementation tracking. Do NOT create beads directly — that's the breakdown skill's responsibility.
-
-## Iterating on the plan
-
-When the user requests changes, revise the plan, re-run the assessment, update the file on disk, and re-present. Always show the complete picture, not just a diff.
+After writing the plan to disk, offer to run the breakdown skill to create beads issues for implementation tracking. Do NOT create beads directly — that's the breakdown skill's responsibility.
 
 ## Boundaries
 

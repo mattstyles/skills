@@ -15,7 +15,7 @@ A PRD defines the problem space — what we're solving and for whom. It does not
 ### 1. Gather context
 
 - If `$ARGUMENTS` references an idea file (e.g. `docs/ideas/005-workspace-snapshots.md`), read it as the starting point.
-- If conversation context includes gorilla output, use the resolved decisions and constraints.
+- If gorilla ran earlier in this conversation, use the resolved decisions and constraints.
 - If starting from scratch, ask the user to describe the problem they want to solve.
 
 ### 2. Assess readiness
@@ -56,9 +56,9 @@ Iterate until the user explicitly accepts.
 
 ### 6. Write to disk
 
-Determine the next available number by checking existing files in `docs/prd/`. Use the format `NNN` (zero-padded to 3 digits).
+Determine the next available number by checking existing files in `docs/prds/`. If the directory does not exist, create it and start at `001`. Use the format `NNN` (zero-padded to 3 digits).
 
-Write to `docs/prd/NNN-slug.md` using the template format. The slug should be short kebab-case derived from the title. Populate the YAML frontmatter:
+Write to `docs/prds/NNN-slug.md` using the template format. The slug should be short kebab-case derived from the title. Populate the YAML frontmatter:
 
 - `title` — the PRD title
 - `source` — path to the idea file, if the PRD was driven from one (omit if not applicable)
