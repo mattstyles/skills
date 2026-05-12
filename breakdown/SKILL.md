@@ -30,7 +30,7 @@ Create a beads epic for the overall plan:
 - **Title**: the plan's goal
 - **Type**: `feature`
 - **Priority**: match the urgency the user has conveyed (default to 2 if unclear)
-- **Description**: summary of what the plan delivers, with links to the plan file and the upstream artefact (if the plan's frontmatter has a `source` field — typically a PRD or idea file). Include a completion ritual: on completion of the final phase, prepend ✅ to the plan's `# Title` heading in the plan file.
+- **Description**: summary of what the plan delivers, with links to the plan file and the upstream artefact (if the plan's frontmatter has a `source` field — typically a PRD or idea file). Include a completion ritual: when the final phase's PR is open, on that same branch prepend ✅ to the plan's `# Title` heading and run `bd close <epic-id>` — both changes ride in the final phase's PR, no separate epic-tick PR.
 
 ### 3. Create phase issues
 
@@ -42,7 +42,10 @@ For each phase in the plan, create a child beads issue using the issue body temp
   - What this phase delivers (the vertical slice)
   - Phase acceptance criteria
   - Which plan-level ACs this phase covers
-  - Completion ritual: on completion (PR merged), prepend ✅ to this phase's heading in the plan file (e.g. `### ✅ Phase 1: [Goal] — beads-abc123`)
+  - Completion ritual (single PR — no follow-up): once the implementation PR is open and its URL is known, on the **same** feature branch:
+    1. Prepend ✅ to this phase's heading in the plan file and append the PR URL (e.g. `### ✅ Phase 1: [Goal] — beads-abc123 — https://github.com/surgeventures/xenon/pull/14`).
+    2. Run `bd close <bead-id>` to close this issue (mutates `.beads/issues.jsonl`).
+    3. Commit both changes and push — they land in the same PR. Merge after.
 
 Wire dependencies (`bd dep add <dependent> <dependency>`):
 - Each phase depends on the previous phase: `bd dep add <phase-N> <phase-N-1>`

@@ -17,6 +17,10 @@ Create pull requests following project conventions.
 ## PR Conventions
 
 ```
+Title: append beads ID if available, or plan number/phase number
+```
+
+```
 ## Summary
 <Brief description of what this PR does - 1-2 sentences>
 
