@@ -2,6 +2,7 @@
 name: idea
 description: Capture a rough idea — the problem and a suggested solution — before it's ready for a full PRD. Use when the user has a half-formed thought, wants to jot down a concept, or says "I have an idea", "we should...", "what if we...".
 argument-hint: "<description of the idea>"
+model: sonnet
 ---
 
 # Idea
