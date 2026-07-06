@@ -2,6 +2,7 @@
 name: gq
 description: Use when the user wants to quickly ship a small change, fix, or chore — creates a branch, commits, and opens a PR in one go
 argument-hint: [description]
+model: haiku
 ---
 
 # Git Quick Ship Skill
